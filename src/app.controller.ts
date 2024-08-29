@@ -6,13 +6,13 @@ export class AppController {
   constructor(private readonly appService: AppService) {}
 
   @Get(':name')
-  async getPokemonAbilities(@Param('name') name: string) {
+  async getPokemonDetails(@Param('name') name: string) {
     try {
-      const abilities = await this.appService.getPokemonAbilities(name);
-      return { abilities };
+      const details = await this.appService.getPokemonDetails(name);
+      return details;
     } catch (err) {
       console.error('Error in controller:', err);
-      return { error: 'Failed to fetch abilities' };
+      return { error: 'Failed to fetch Pokémon details' };
     }
   }
 }
