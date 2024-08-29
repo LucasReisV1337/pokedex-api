@@ -1,73 +1,38 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# Documentação do Backend
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+Este backend é desenvolvido com NestJS e fornece uma API RESTful para obter detalhes sobre Pokémon. A seguir, está uma visão geral dos principais componentes e funcionalidades do sistema.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+## Visão Geral
 
-## Description
+O backend é responsável por oferecer uma interface para consultar informações sobre Pokémon utilizando a PokéAPI. Ele inclui um controlador, um serviço, e uma configuração de módulo para gerenciar a comunicação e processamento dos dados.
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+## Componentes Principais
 
-## Installation
+### 1. Controlador
 
-```bash
-$ npm install
-```
+O controlador, `AppController`, gerencia as requisições HTTP para o endpoint `/pokemon/:name`. Ele recebe o nome de um Pokémon como parâmetro e retorna os detalhes do Pokémon ou uma mensagem de erro caso ocorra um problema durante a busca. Ele utiliza o serviço para obter os dados necessários e lida com exceções, garantindo que erros sejam tratados de forma adequada e informativa.
 
-## Running the app
+### 2. Serviço
 
-```bash
-# development
-$ npm run start
+O serviço, `AppService`, é responsável por fazer a requisição para a PokéAPI e processar a resposta. Ele realiza a busca dos detalhes do Pokémon, que incluem habilidades, tipos, estatísticas e o sprite do Pokémon. O serviço encapsula a lógica de comunicação com a API externa e a transformação dos dados para o formato necessário pela aplicação.
 
-# watch mode
-$ npm run start:dev
+### 3. Módulo
 
-# production mode
-$ npm run start:prod
-```
+O módulo, `AppModule`, configura o aplicativo NestJS, importando o `HttpModule` para permitir requisições HTTP e definindo o controlador e o serviço como parte da aplicação. Ele é o ponto de entrada para a configuração e inicialização dos componentes do backend.
 
-## Test
+### 4. Inicialização
 
-```bash
-# unit tests
-$ npm run test
+A aplicação é iniciada e configurada para aceitar requisições CORS, permitindo a comunicação com um frontend hospedado em `http://localhost:3001`. O backend escuta na porta 3000.
 
-# e2e tests
-$ npm run test:e2e
+## Como Utilizar
 
-# test coverage
-$ npm run test:cov
-```
+1. **Executar o Backend**: Inicie o backend com o comando padrão do NestJS. Certifique-se de que todas as dependências estão instaladas.
+2. **Fazer Requisições**: Utilize o endpoint `/pokemon/:name` para buscar informações sobre um Pokémon específico. Substitua `:name` pelo nome do Pokémon desejado. O backend retornará os detalhes ou uma mensagem de erro em caso de falha.
 
-## Support
+## Contribuição
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+Contribuições são bem-vindas! Para contribuir, você pode abrir issues para relatar problemas ou melhorias e submeter pull requests para propor alterações. Siga as diretrizes do repositório para garantir que as contribuições sejam aceitas e integradas de forma eficiente.
 
-## Stay in touch
+## Licença
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
+Este projeto é licenciado sob a [Licença MIT](LICENSE). Veja o arquivo LICENSE para mais detalhes.
