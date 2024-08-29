@@ -1,6 +1,7 @@
 # Documentação do Backend
 
 Este backend é desenvolvido com NestJS e fornece uma API RESTful para obter detalhes sobre Pokémon. A seguir, está uma visão geral dos principais componentes e funcionalidades do sistema.
+Por padrão, a branch mais estávael para testes e a "master".
 
 ## Visão Geral
 
