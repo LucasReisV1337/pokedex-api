@@ -1,12 +1,18 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Param } from '@nestjs/common';
 import { AppService } from './app.service';
 
-@Controller()
+@Controller('pokemon')
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
-  @Get()
-  getHello(): string {
-    return this.appService.getHello();
+  @Get(':name')
+  async getPokemonAbilities(@Param('name') name: string) {
+    try {
+      const abilities = await this.appService.getPokemonAbilities(name);
+      return { abilities };
+    } catch (err) {
+      console.error('Error in controller:', err);
+      return { error: 'Failed to fetch abilities' };
+    }
   }
 }
